@@ -2,7 +2,7 @@
 #define DARRYL_H
 
 #ifndef _DARRYL_IMPL_
-typedef struct {} *Darryl
+typedef struct { } *Darryl;
 #endif
 
 /*
