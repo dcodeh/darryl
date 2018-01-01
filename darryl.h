@@ -9,6 +9,5 @@ typedef struct { } *Darryl;
  * put function definitions here
  */ 
 
-void poop_in_a_diaper(void);
 
 #endif

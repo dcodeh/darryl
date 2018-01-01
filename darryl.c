@@ -16,8 +16,3 @@ typedef struct darrylStruct *Darryl;
 /*
  * Add functions and such here
  */
-
-void poop_in_a_diaper(void) {
-    printf("you have pooped in a diaper.\nLove, darryl\n");
-}
-
