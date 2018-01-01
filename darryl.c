@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 #define DEFAULT_SZ 5
 
@@ -11,3 +12,12 @@ typedef struct darrylStruct *Darryl;
 
 #define _DARRYL_IMPL_
 #include "darryl.h"
+
+/*
+ * Add functions and such here
+ */
+
+void poop_in_a_diaper(void) {
+    printf("you have pooped in a diaper.\nLove, darryl\n");
+}
+
