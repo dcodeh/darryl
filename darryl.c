@@ -1,11 +1,11 @@
-#include <stdlib.h>
 #include <stdio.h>
 
 #define DEFAULT_SZ 5
 
 struct darrylStruct {
     void * elements[DEFAULT_SZ];
-    size_t size;
+    int size;
+    void (*cleanup)(void * data);
 };
 
 typedef struct darrylStruct *Darryl;
