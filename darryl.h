@@ -66,4 +66,10 @@ void * to_array(Darryl d);
 /// free all of the resources used by the data structure
 void destroy_darryl(Darryl d);
 
+/// manually increase the allocated size of the array by the specified amount
+int bigger(Darryl d, int size);
+
+/// manually decrease the allocated size of the array by the specified amount
+int smaller(Darryl d, int size);
+
 #endif

@@ -14,6 +14,8 @@ int main() {
 
     Darryl d = create_darryl();
 
+    printf("Darryl's size: %d\n", get_allocated_size(d));
+
     destroy_darryl(d);
 
     return 0;
