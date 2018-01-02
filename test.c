@@ -20,7 +20,10 @@ int main() {
     int sylvia = 21;
 
     add_at(d, 0, &jared);
-    add_at(d, 4, &sylvia);
+    add_at(d, 6, &sylvia);
+
+    int * jp = (int *) get(d, 0);
+    printf("Jared is %d\n", *jp);
 
     destroy_darryl(d);
 
