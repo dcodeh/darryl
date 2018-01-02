@@ -15,7 +15,6 @@
 struct darrylStruct {
     void ** elements;
     int size;
-    void (*cleanup)(void * data);
 };
 
 typedef struct darrylStruct *Darryl;
@@ -26,12 +25,22 @@ typedef struct darrylStruct *Darryl;
 /**
   * Creates and initializes an empty dynamic array list
   */
-Darryl create_darryl(void (*cleanup)()) {
+Darryl create_darryl() {
 
     Darryl d = malloc(sizeof(struct darrylStruct));
     d -> elements = malloc(DEFAULT_SZ * sizeof(void*));
     d -> size = DEFAULT_SZ;
-    d -> cleanup = cleanup;
 
     return d;
 }
+
+/**
+  * Frees resources used by the data structure, and all of the data inside
+  */ 
+void destroy_darryl(Darryl d) {
+    
+    free(d -> elements);
+
+    free(d);
+}
+

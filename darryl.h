@@ -21,7 +21,7 @@ typedef struct { } *Darryl;
 // TODO in the future consider allowing the user to pass a function pointer
 // for making custom logic to control reallocating
 /// Initialize an empty dynamic array list, and specify a data cleanup function
-Darryl create_darryl(void (*cleanup)());
+Darryl create_darryl();
 
 // TODO decide if this should be private (i.e. not in the header file)
 /// return the allocated size of this dynamic array list
