@@ -1,3 +1,13 @@
+// darryl.h 
+// @author Cody Burrows <dcodyburrows@gmail.com>
+//
+// This file provides function definitions for the Darryl data structure.
+// Its design is loosely based on the Java ArrayList, and is set up such that
+// the underlying data type is hidden from the user. Just don't worry about it.
+//
+// TODO add some text describing how to use this thing
+//
+// ////////////////////////////////////////////////////////////////////////////
 #ifndef DARRYL_H
 #define DARRYL_H
 
