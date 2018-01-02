@@ -12,7 +12,9 @@
 
 int main() {
 
-    printf("lasagne\n");
+    Darryl d = create_darryl();
+
+    destroy_darryl(d);
 
     return 0;
 }

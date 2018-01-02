@@ -19,8 +19,8 @@ typedef struct { } *Darryl;
 #endif
 
 // TODO in the future consider allowing the user to pass a function pointer
-// for making custom logic to control reallocating
-/// Initialize an empty dynamic array list, and specify a data cleanup function
+// for making custom logic to control reallocating, and for data cleanup
+/// Initialize an empty dynamic array list
 Darryl create_darryl();
 
 // TODO decide if this should be private (i.e. not in the header file)
@@ -63,7 +63,7 @@ void * replace(Darryl d, int index, void * data);
 /// return a pointer to a static snapshot of the data stored in the structure
 void * to_array(Darryl d);
 
-/// free all of the resources used by the data structure, and clean up all data
+/// free all of the resources used by the data structure
 void destroy_darryl(Darryl d);
 
 #endif

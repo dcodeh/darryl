@@ -35,7 +35,8 @@ Darryl create_darryl() {
 }
 
 /**
-  * Frees resources used by the data structure, and all of the data inside
+  * Frees resources used by the data structure, and leaks any data
+  * left over in the structure all over the place.
   */ 
 void destroy_darryl(Darryl d) {
     
