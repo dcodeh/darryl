@@ -147,4 +147,89 @@ bool is_empty(Darryl d) {
     return get_size(d) == 0;
 }
 
+/**
+  * Inserts an element into a specific place in the array.
+  *
+  * Returns true if the operation completed successfully. 
+  *
+  * Takes O(n) time in the worst case :(
+  */
+bool add_at(Darryl d, int index, void * data) {
+    
+    int size = d -> size;
 
+    if(index >= 0) {
+
+        // check if we need to resize
+        // if index outside allocated range
+        // array is full (no more room)
+        
+        if(index >= size) {
+            
+            // guaranteed to be positive or zero
+            int diff = size - index;
+
+            if(diff > DEFAULT_SZ) {
+                bigger(d, diff);
+            } else {
+                bigger(d, DEFAULT_SZ);
+            }
+
+            // insert and fix all of the other elements
+            void * removed = replace(d, index, data);
+
+            for(int i = index + 1; i < size; ++i) {
+                
+                if(removed) {
+                    removed = replace(d, i, removed);
+                }
+
+            }
+
+        }
+
+        // put the thing in
+
+        return true;
+    } else {
+        return false;
+    }
+
+
+}
+
+/**
+  * Yanks out an element, and puts something else in its place. 
+  * 
+  * Returns the yanked element
+  */ 
+void * replace(Darryl d, int index, void * data) {
+    
+    if(index < (d -> size)) {
+        void * removed = remove_data(d, index);
+        add_at(d, index, data);
+        return removed;
+    } else {
+        return 0;
+    }
+}
+
+/**
+  * Removes a specified entry from the array list
+  */
+void * remove_data(Darryl d, int index) {
+
+    if(index < (d -> size)) {
+
+        char * element_array = (char *) d -> elements;
+
+        void * to_remove = element_array + (index * sizeof(void *));
+        void * ret = to_remove;
+
+        to_remove = 0;
+
+        return ret;
+    } else {
+        return 0;
+    }
+}

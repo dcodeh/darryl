@@ -30,6 +30,7 @@ int get_allocated_size(Darryl d);
 /// return the number of elements in the list
 int get_size(Darryl d);
 
+// TODO consider hiding this function, and adding a user-accessible insert()
 /// add data to a specific place in the array, then return true if successful
 bool add_at(Darryl d, int index, void * data);
 
