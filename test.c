@@ -16,6 +16,12 @@ int main() {
 
     printf("Darryl's size: %d\n", get_allocated_size(d));
 
+    int jared = 17;
+    int sylvia = 21;
+
+    add_at(d, 0, &jared);
+    add_at(d, 4, &sylvia);
+
     destroy_darryl(d);
 
     return 0;

@@ -190,6 +190,9 @@ bool add_at(Darryl d, int index, void * data) {
 
         // put the thing in
 
+        int num = d -> num_elements;
+        num++;
+        d -> num_elements = num;
         return true;
     } else {
         return false;
@@ -232,4 +235,14 @@ void * remove_data(Darryl d, int index) {
     } else {
         return 0;
     }
+}
+
+/**
+  * Returns the data at a specific index.
+  */
+void * get(Darryl d, int index) {
+    char * element = (char *)(d -> elements);
+    void * ret = element + (index * sizeof(void*));
+
+    return ret;
 }
