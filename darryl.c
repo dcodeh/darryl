@@ -131,6 +131,20 @@ int smaller(Darryl d, int size) {
 
     return new_size;
 
-    
-
 }
+
+/**
+  * Returns the number of elements stored in the array list
+  */ 
+int get_size(Darryl d) {
+    return d -> num_elements;
+}
+
+/**
+  * Returns true if there are no elements in the array.
+  */ 
+bool is_empty(Darryl d) {
+    return get_size(d) == 0;
+}
+
+
