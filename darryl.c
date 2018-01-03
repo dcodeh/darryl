@@ -13,7 +13,7 @@
 #define DEFAULT_SZ 5
 
 struct darrylStruct {
-    void * elements;
+    void ** elements;
     int size;
     int num_elements;
 };
@@ -29,9 +29,9 @@ typedef struct darrylStruct *Darryl;
 Darryl create_darryl() {
 
     Darryl d = (Darryl) malloc(sizeof(struct darrylStruct));
-    void * elements = calloc(DEFAULT_SZ, sizeof(void*));
-    d -> elements = elements;
-    d -> size = DEFAULT_SZ;
+    // void * elements = calloc(DEFAULT_SZ, sizeof(void*));
+    d -> elements = 0;
+    d -> size = 0;
     d -> num_elements = 0;
 
     return d;
@@ -43,7 +43,9 @@ Darryl create_darryl() {
   */ 
 void destroy_darryl(Darryl d) {
 
-    free(d -> elements);
+    if(d -> elements) {
+        free(d -> elements);
+    } 
 
     free(d);
 }
@@ -86,7 +88,7 @@ int bigger(Darryl d, int size) {
         d -> elements = new;
         d -> size = new_size;
     } 
-    
+
     return d -> size;
 
 }
@@ -152,7 +154,7 @@ bool is_empty(Darryl d) {
   *
   * Returns true if the operation completed successfully. 
   *
-  * Takes O(n) time in the worst case :(
+  * Takeds O(n) time in the worst case :(
   */
 bool add_at(Darryl d, int index, void * data) {
     
@@ -189,6 +191,7 @@ bool add_at(Darryl d, int index, void * data) {
         }
 
         // put the thing in
+        d -> elements[index] = data;
 
         int num = d -> num_elements;
         num++;
@@ -224,14 +227,10 @@ void * remove_data(Darryl d, int index) {
 
     if(index < (d -> size)) {
 
-        char * element_array = (char *) d -> elements;
-
-        void * to_remove = element_array + (index * sizeof(void *));
-        void * ret = to_remove;
-
-        to_remove = 0;
-
-        return ret;
+        void * data = d -> elements[index];
+        d -> elements[index] = 0;
+        
+        return data;
     } else {
         return 0;
     }
@@ -241,8 +240,10 @@ void * remove_data(Darryl d, int index) {
   * Returns the data at a specific index.
   */
 void * get(Darryl d, int index) {
-    char * element = (char *)(d -> elements);
-    void * ret = element + (index * sizeof(void*));
 
-    return ret;
+    if(index >= 0) {
+        return d->elements[index];
+    } else {
+        return 0;
+    }
 }
