@@ -29,7 +29,6 @@ typedef struct darrylStruct *Darryl;
 Darryl create_darryl() {
 
     Darryl d = (Darryl) malloc(sizeof(struct darrylStruct));
-    // void * elements = calloc(DEFAULT_SZ, sizeof(void*));
     d -> elements = 0;
     d -> size = 0;
     d -> num_elements = 0;
@@ -69,7 +68,7 @@ int get_allocated_size(Darryl d) {
 int bigger(Darryl d, int size) {
 
     void * old = d -> elements;
-    void * new = 0;
+    void * new;
     int new_size = 0;
 
     switch(size) {
@@ -82,7 +81,7 @@ int bigger(Darryl d, int size) {
             break;
     }
 
-    new = realloc(old, (size_t) new_size);
+    new = realloc(old, (size_t) new_size * sizeof(void *));
 
     if(new) {
         d -> elements = new;
@@ -124,7 +123,7 @@ int smaller(Darryl d, int size) {
         new_size = 0;
     }
 
-    new = realloc(old, (size_t) new_size);
+    new = realloc(old, (size_t) new_size * sizeof(void *));
 
     if(new) {
         d -> elements = new;
