@@ -28,8 +28,8 @@ typedef struct darrylStruct *Darryl;
   */
 Darryl create_darryl() {
 
-    Darryl d = (Darryl) malloc(sizeof(struct darrylStruct));
-    d -> elements = 0;
+    Darryl d = (Darryl) calloc(1, sizeof(struct darrylStruct));
+    d -> elements = NULL;
     d -> size = 0;
     d -> num_elements = 0;
 
@@ -67,8 +67,9 @@ int get_allocated_size(Darryl d) {
   */
 int bigger(Darryl d, int size) {
 
-    void * old = d -> elements;
-    void * new;
+    void * old = NULL;
+    old = d -> elements;
+    void * new = NULL;
     int new_size = 0;
 
     switch(size) {
@@ -81,7 +82,7 @@ int bigger(Darryl d, int size) {
             break;
     }
 
-    new = realloc(old, (size_t) new_size * sizeof(void *));
+    new = (void *) realloc(old, (size_t) new_size * sizeof(void *));
 
     if(new) {
         d -> elements = new;
@@ -105,7 +106,8 @@ int bigger(Darryl d, int size) {
   */
 int smaller(Darryl d, int size) {
 
-    void * old = d -> elements;
+    void * old = 0;
+    old = d -> elements;
     void * new = 0;
     int new_size = 0;
 
@@ -123,7 +125,7 @@ int smaller(Darryl d, int size) {
         new_size = 0;
     }
 
-    new = realloc(old, (size_t) new_size * sizeof(void *));
+    new = (void *) realloc(old, (size_t) new_size * sizeof(void *));
 
     if(new) {
         d -> elements = new;
@@ -177,14 +179,19 @@ bool add_at(Darryl d, int index, void * data) {
             }
 
             // insert and fix all of the other elements
-            void * removed = replace(d, index, data);
+            void * dest = NULL;
+            dest = d -> elements[index];
+            
+            if(dest) {
+                void * removed = replace(d, index, data);
 
-            for(int i = index + 1; i < size; ++i) {
-                
-                if(removed) {
-                    removed = replace(d, i, removed);
+                for(int i = index + 1; i < size; ++i) {
+                    
+                    if(removed) {
+                        removed = replace(d, i, removed);
+                    }
+
                 }
-
             }
 
         }
@@ -240,9 +247,10 @@ void * remove_data(Darryl d, int index) {
   */
 void * get(Darryl d, int index) {
 
-    if(index >= 0) {
+    if(index >= 0 && index < (d -> size)) {
         return d->elements[index];
     } else {
         return 0;
     }
+
 }
