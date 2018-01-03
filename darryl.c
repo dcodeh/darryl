@@ -154,7 +154,7 @@ bool is_empty(Darryl d) {
   *
   * Returns true if the operation completed successfully. 
   *
-  * Takeds O(n) time in the worst case :(
+  * Takes O(n) time in the worst case :(
   */
 bool add_at(Darryl d, int index, void * data) {
     
