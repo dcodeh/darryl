@@ -14,43 +14,30 @@ int main() {
 
     Darryl d = create_darryl();
 
-    printf("Darryl's size: %d\n", get_allocated_size(d));
+    printf("darryl's size: %d\n", get_allocated_size(d));
 
-    int jared = 17;
-    int sylvia = 21;
+    int * dave = NULL;
+    int val = 68;
+    dave = &val;
 
-    int * jared_pointer = NULL;
-    jared_pointer = &jared;
-
-    add_at(d, 0, jared_pointer);
-    add_at(d, 6, &sylvia);
-
-    int * jp = (int *) get(d, 0);
-    printf("Jared is %d\n", *jp);
-
-    printf("Darryl's size: %d\n", get_allocated_size(d));
-
-    int * sp = NULL;
-    sp = (int *) get(d, 4);
-
-    if(!sp) {
-        printf("Yep, an invalid index returns null\n");
+    for(int i = 0; i < 12; ++i) {
+        add_at(d, i, dave);
+        printf("darryl's size: %d\n", get_allocated_size(d));
     }
 
-    sp = (int *) get(d, 6);
-    printf("Sylvia is %d\n", *sp);
+    int * got = (int *) get(d, 0);
+    printf("zero: %d\n", *got);
 
-    sp = (int *) get(d, 12);
+    int diane = 1000343;
+    int * dp = &diane;
 
-    if(!sp) {
-        printf("Yep, an invalid index returns null\n");
-    }
+    replace(d, 0, dp);
 
-    smaller(d, 3);
-    printf("Darryl's size: %d\n", get_allocated_size(d));
+    got = (int *) get(d, 0);
+    printf("zero: %d\n", *got);
 
-    sp = (int *) get(d, 6);
-    printf("Sylvia is %d\n", *sp);
+    got = (int *) get(d, 4);
+    printf("four: %d\n", *got);
 
     destroy_darryl(d);
 

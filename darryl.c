@@ -234,7 +234,7 @@ void * remove_data(Darryl d, int index) {
     if(index < (d -> size)) {
 
         void * data = d -> elements[index];
-        d -> elements[index] = 0;
+        d -> elements[index] = NULL;
         
         return data;
     } else {
