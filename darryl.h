@@ -37,6 +37,7 @@ bool add_at(Darryl d, int index, void * data);
 /// append the data to the array, then return true if successful
 bool append(Darryl d, void * data);
 
+// TODO consider allowing the user to pass in a cleanup function
 /// remove all of the data from the array, then return true if successful
 bool clear(Darryl d);
 

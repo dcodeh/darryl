@@ -16,28 +16,31 @@ int main() {
 
     printf("darryl's size: %d\n", get_allocated_size(d));
 
-    int * dave = NULL;
-    int val = 68;
-    dave = &val;
+    int lasagna = 1030;
+    int * davd = &lasagna;
 
-    for(int i = 0; i < 12; ++i) {
-        add_at(d, i, dave);
-        printf("darryl's size: %d\n", get_allocated_size(d));
-    }
+    int las2 = 1040;
+    int * davd2 = &las2;
 
-    int * got = (int *) get(d, 0);
-    printf("zero: %d\n", *got);
+    int las3 = 1050;
+    int * davd3 = &las3;
 
-    int diane = 1000343;
-    int * dp = &diane;
+    add_at(d, 0, davd);
+    printf("darryl's size: %d\n", get_allocated_size(d));
+    printf("Here's davd: %d\n", *((int *) get(d, 0)));
+    add_at(d, 1, davd2);
+    printf("darryl's size: %d\n", get_allocated_size(d));
+    printf("Here's davd: %d\n", *((int *) get(d, 0)));
+    add_at(d, 2, davd3);
+    printf("darryl's size: %d\n", get_allocated_size(d));
+    printf("Here's davd: %d\n", *((int *) get(d, 0)));
 
-    replace(d, 0, dp);
+    printf("Here's davd2: %d\n", *((int *) get(d, 1)));
+    printf("Here's davd3: %d\n", *((int *) get(d, 2)));
 
-    got = (int *) get(d, 0);
-    printf("zero: %d\n", *got);
-
-    got = (int *) get(d, 4);
-    printf("four: %d\n", *got);
+    printf("where's davd? %d\n", index_of(d, davd));
+    printf("where's davd2? %d\n", index_of(d, davd2));
+    printf("where's davd3? %d\n", index_of(d, davd3));
 
     destroy_darryl(d);
 

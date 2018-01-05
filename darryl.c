@@ -235,6 +235,11 @@ void * remove_data(Darryl d, int index) {
 
         void * data = d -> elements[index];
         d -> elements[index] = NULL;
+
+        int old_num = 0;
+        old_num = d -> num_elements;
+        old_num--;
+        d -> num_elements = old_num;
         
         return data;
     } else {
@@ -252,5 +257,33 @@ void * get(Darryl d, int index) {
     } else {
         return 0;
     }
+
+}
+
+/**
+  * Return the location of the specified element if it exists
+  */
+int index_of(Darryl d, void * data) {
+
+    int index = -1;
+    for(int i = 0; i < (d -> size); ++i) {
+
+        if(d -> elements[i] == data) {
+            index = i;
+            break;
+        }
+
+    }
+
+    return index;
+
+}
+
+/**
+  * Return true if the specified element exists
+  */ 
+bool contains(Darryl d, void * data) {
+
+    return index_of(d, data) != -1;
 
 }
