@@ -287,3 +287,16 @@ bool contains(Darryl d, void * data) {
     return index_of(d, data) != -1;
 
 }
+
+/**
+  * Removes a range of elements from the array from
+  * [start_index, end_index] (inclusive).
+  */ 
+void remove_range(Darryl d, int start_index, int end_index) {
+
+    for(int i = start_index; i <= end_index; ++i) {
+        remove_data(d, i);
+
+    }
+    
+}

@@ -59,9 +59,6 @@ void remove_range(Darryl d, int start_index, int end_index);
 /// swap some data out of the data structure
 void * replace(Darryl d, int index, void * data);
 
-/// return a pointer to a static snapshot of the data stored in the structure
-void * to_array(Darryl d);
-
 /// free all of the resources used by the data structure
 void destroy_darryl(Darryl d);
 
