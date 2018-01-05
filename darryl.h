@@ -34,9 +34,6 @@ int get_size(Darryl d);
 /// add data to a specific place in the array, then return true if successful
 bool add_at(Darryl d, int index, void * data);
 
-/// append the data to the array, then return true if successful
-bool append(Darryl d, void * data);
-
 // TODO consider allowing the user to pass in a cleanup function
 /// remove all of the data from the array, then return true if successful
 bool clear(Darryl d);
