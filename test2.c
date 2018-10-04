@@ -28,7 +28,7 @@ int main(int argc, char ** argv) {
 
     if(argc != 6) {
         // bail out if the user is stupid, and enters the wrong arguments
-        printf("Usage: $ ./lucas a b p q n\n");
+        printf("Usage: $ ./test2 a b p q n\n");
         return EXIT_FAILURE;
     }
 
