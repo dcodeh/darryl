@@ -23,6 +23,9 @@ typedef struct { } *Darryl;
 /// Initialize an empty dynamic array list
 Darryl create_darryl();
 
+/// Initialize an empty self-cleaning dynamic array with a cleanup function
+Darryl create_darryl_cat(void (*f)());
+
 // TODO decide if this should be private (i.e. not in the header file)
 /// return the allocated size of this dynamic array list
 int get_allocated_size(Darryl d);
@@ -34,8 +37,8 @@ int get_size(Darryl d);
 /// add data to a specific place in the array, then return true if successful
 bool add_at(Darryl d, int index, void * data);
 
-// TODO consider allowing the user to pass in a cleanup function
-/// remove all of the data from the array, then return true if successful
+/// remove all of the data from the array, then return true if cleanup was
+/// successful.
 bool clear(Darryl d);
 
 /// return true if the array d contains data as one of its elements
