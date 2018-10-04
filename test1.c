@@ -21,6 +21,7 @@ void clean(char * str) {
     // this cleanup function might be more complicated if you're
     // throwing complex datatypes into darryl
     
+    // for example...
     // do a backflip
     free(str);
 }
